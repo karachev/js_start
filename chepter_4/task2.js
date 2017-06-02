@@ -13,3 +13,5 @@ var myCrazyObject = {
 Answer:
 
 myCrazyObject["some array"][2].number;
+or
+myCrazyObject["some array"][2]["number"];

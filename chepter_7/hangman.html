@@ -33,6 +33,9 @@
     while (remainingLetters > 0) {
       alert(answerArray.join(" "));
       var guess = prompt("Угадайте букву, или нажмите Отмена для выхода из игры.");
+
+      guess = guess.toLowerCase();
+
       if (guess === null) {
         break;
       } else if (guess.length !== 1) {

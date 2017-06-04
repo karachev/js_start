@@ -30,7 +30,9 @@
 
     var remainingLetters = word.length;
 
-    while (remainingLetters > 0) {
+    var life = 6 * word.length;
+
+    while (remainingLetters > 0 && life > 0) {
       alert(answerArray.join(" "));
       var guess = prompt("Угадайте букву, или нажмите Отмена для выхода из игры.");
 
@@ -46,12 +48,21 @@
             answerArray[j] = guess;
             remainingLetters--;
           }
+          else if (word[j] != guess) {
+            life--;
+          }
         }
       }
     }
 
-    alert(answerArray.join(" "));
-    alert("Отлично! Было загадано слово " + word);
+    if (life > 0) {
+      alert(answerArray.join(" "));
+      alert("Отлично! Было загадано слово " + word);
+    } else {
+      alert("К сожалению ты проиграл :(");
+    }
+
+
   </script>
 </body>
 </html>

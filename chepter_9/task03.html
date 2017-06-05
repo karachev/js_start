@@ -1,0 +1,23 @@
+<!-- #3. Отложенная анимация
+Для задержки анимации можно воспользоваться методом delay.
+С помощью delay, fadeOut и fadeIn заставьте какой-нибудь
+элемент плавно исчезнуть, а затем, через пять секунд, снова
+проявиться. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+ <title>Изучаем DOM</title>
+</head>
+<body>
+ <h1 id="main-heading">Привет, мир!</h1>
+
+ <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+ <script>
+    for (var i = 0; i < 5; i++) {
+      $("h1").fadeOut(200).delay(1000).fadeIn(200);
+    }
+ </script>
+</body>
+</html>

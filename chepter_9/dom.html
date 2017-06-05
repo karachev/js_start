@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+ <title>Изучаем DOM</title>
+</head>
+<body>
+ <h1 id="main-heading">Привет, мир!</h1>
+
+ <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+ <script>
+  var newHeadingText = prompt("Введите новый заголовок:");
+  $("#main-heading").text(newHeadingText);
+
+  $("body").append("<p>Бла-бла-бла</p>");
+
+  $("h1").slideUp(1000).slideDown(1000);
+ </script>
+</body>
+</html>

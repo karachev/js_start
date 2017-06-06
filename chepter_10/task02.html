@@ -1,0 +1,63 @@
+<!-- #2. Создайте собственную анимацию
+Используйте setInterval для анимации заголовка h1, двигая
+его по квадрату, вдоль краев страницы. Пусть он переместится
+на 200 пикселей вправо, на 200 пикселей вниз, 200 пикселей
+влево, 200 пикселей вверх, а затем начнет с начала. Подсказка:
+нужно запоминать текущее направление (вправо, вниз, влево
+или вверх), чтобы знать, увеличивать или уменьшать для заго-
+ловка отступы слева (left) и сверху (top). Кроме того, при
+достижении угла квадрата нужно будет менять направление. -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Перемещение мышки</title>
+  </head>
+  <body>
+    <h1 id="heading">Привет, мир!</h1>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <script>
+      var leftOffset = 0;
+      var topOffset = 0;
+
+      function right() {
+        $("#heading").offset({ left: leftOffset });
+        leftOffset++;
+
+        if (leftOffset > 200) {
+          leftOffset = 200;
+        }
+      };
+
+      function bottom() {
+        $("#heading").offset({ top: topOffset });
+        topOffset++;
+
+        if (topOffset > 200) {
+          topOffset = 200;
+        }
+      }
+
+      function left() {
+        $("#heading").offset({ left: leftOffset });
+        leftOffset--;
+
+        if (leftOffset = 0) {
+          leftOffset = 0;
+        }
+      };
+
+      function top() {
+        $("#heading").offset({ top: topOffset });
+        topOffset--;
+
+        if (topOffset = 0) {
+          topOffset = 0;
+        }
+      }
+
+
+    </script>
+  </body>
+</html>

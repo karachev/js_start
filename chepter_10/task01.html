@@ -1,0 +1,25 @@
+<!-- #1. Следом за кликами
+Измените последний пример с mousemove так, чтобы заголовок
+следовал не за указателем мышки, а только за кликами: вы кли-
+каете в любом месте страницы, и заголовок перемещается туда. -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Перемещение мышки</title>
+  </head>
+  <body>
+    <h1 id="heading">Привет, мир!</h1>
+    <p>Блаблабла</p>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <script>
+      $("html").click(function (event) {
+        $("#heading").offset({
+          left: event.pageX,
+          top: event.pageY
+       });
+      });
+    </script>
+  </body>
+</html>

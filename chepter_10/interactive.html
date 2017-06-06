@@ -17,7 +17,8 @@ moveHeading либо уменьшив время между вызовами mov
       // Скоро здесь будет JavaScript-код
 
       var leftOffset = 0;
-      var moveHeading = function () {
+      // var moveHeading = function () {
+      function moveHeading() {
         $("#heading").offset({ left: leftOffset });
         leftOffset++;
         if (leftOffset > 200) {

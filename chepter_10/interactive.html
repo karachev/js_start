@@ -1,0 +1,30 @@
+<!-- ПОПРОБУЙТЕ!
+Вы можете ускорить анимацию, увеличив приращение leftOffset в функции
+moveHeading либо уменьшив время между вызовами moveHeading.
+Как удвоить скорость движения заголовка? Попробуйте двумя способами.
+Чем отличаются результаты? -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Интерактивное программирование</title>
+  </head>
+  <body>
+    <h1 id="heading">Привет, мир!</h1>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"> </script>
+    <script>
+      // Скоро здесь будет JavaScript-код
+
+      var leftOffset = 0;
+      var moveHeading = function () {
+        $("#heading").offset({ left: leftOffset });
+        leftOffset++;
+        if (leftOffset > 200) {
+          leftOffset = 0;
+        }
+      };
+      setInterval(moveHeading, 15);
+    </script>
+  </body>
+</html>

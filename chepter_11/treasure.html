@@ -6,7 +6,7 @@
   </head>
   <body>
     <h1 id="heading">Найди клад!</h1>
-    <img id="map" width=400 height=400 src="http://nostarch.com/images/treasuremap.png">
+    <img id="map" width=800 height=800 src="http://nostarch.com/images/treasuremap.png">
     <p id="distance"></p>
     <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
     <script>
@@ -24,27 +24,30 @@
 
       // Получить для расстояния строку подсказки
       var getDistanceHint = function (distance) {
-        if (distance < 10) {
+        if (distance < 20) {
           return "Обожжешься!";
-        } else if (distance < 20) {
-          return "Очень горячо";
         } else if (distance < 40) {
-          return "Горячо";
+          return "Очень горячо";
         } else if (distance < 80) {
-          return "Тепло";
+          return "Горячо";
         } else if (distance < 160) {
-          return "Холодно";
+          return "Тепло";
         } else if (distance < 320) {
+          return "Холодно";
+        } else if (distance < 640) {
           return "Очень холодно";
+        } else if (distance < 720){
+          return "Очень-очень холодно";
         } else {
           return "Замерзнешь!";
         }
       };
 
       // Создаем переменные
-      var width = 400;
-      var height = 400;
+      var width = 800;
+      var height = 800;
       var clicks = 0;
+      var remainingStrokes = 20;
 
       // Случайная позиция клада
       var target = {
@@ -60,9 +63,13 @@
         // Преобразуем расстояние в подсказку
         var distanceHint = getDistanceHint(distance);
         // Записываем в элемент #distance новую подсказку
-        $("#distance").text(distanceHint);
+        remainingStrokes--;
+        $("#distance").text(distanceHint + ". Осталось " + remainingStrokes + " ходов" );
         // Если клик был достаточно близко, поздравляем с победой
-        if (distance < 8) {
+        if (clicks > 20) {
+          alert("КОНЕЦ ИГРЫ");
+        }
+        if (distance < 16) {
           alert("Клад найден! Сделано кликов: " + clicks);
         }
       });

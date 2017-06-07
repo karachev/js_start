@@ -8,12 +8,13 @@
     <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
     <script>
 
-      var Car = function (x, y) {
+      var Car = function (x, y, speed) {
         this.x = x;
         this.y = y;
+        this.draw();
       }
 
-      Car.prototype.draw = function (car) {
+      Car.prototype.draw = function () {
         var carHtml = '<img src="http://nostarch.com/images/car.png">';
         this.carElement = $(carHtml);
         this.carElement.css({
@@ -24,8 +25,8 @@
         $("body").append(this.carElement);
       };
 
-      Car.prototype.moveRight = function (car) {
-        this.x += 5;
+      Car.prototype.moveRight = function (speed) {
+        this.x += speed;
 
         this.carElement.css({
           left: this.x,
@@ -33,8 +34,8 @@
         });
       }
 
-      Car.prototype.moveLeft = function (car) {
-        this.x -= 5;
+      Car.prototype.moveLeft = function (speed) {
+        this.x -= speed;
 
         this.carElement.css({
           left: this.x,
@@ -42,8 +43,8 @@
         });
       }
 
-      Car.prototype.moveTop = function (car) {
-        this.y -= 5;
+      Car.prototype.moveTop = function (speed) {
+        this.y -= speed;
 
         this.carElement.css({
           left: this.x,
@@ -51,8 +52,8 @@
         });
       }
 
-      Car.prototype.moveBottom = function (car) {
-        this.y += 5;
+      Car.prototype.moveBottom = function (speed) {
+        this.y += speed;
 
         this.carElement.css({
           left: this.x,
@@ -61,14 +62,12 @@
       }
 
       var mark2 = new Car(10, 10);
-      var civic = new Car(150, 20);
+      var civic = new Car(10, 150);
 
-      mark2.draw();
-      civic.draw();
-
-      for (var i = 0; i < 100; i++) {
-        mark2.moveRight();
-      };
+      setInterval( function() {
+        mark2.moveRight(Math.random() * 5);
+        civic.moveRight(Math.random() * 5);
+      }, 30);
 
     </script>
   </body>

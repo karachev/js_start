@@ -18,45 +18,46 @@
     <h1 id="heading">Привет, мир!</h1>
     <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
     <script>
-      var leftOffset = 0;
-      var topOffset = 0;
+      var direction = 'right';
+      var offset = 0;
 
-      function right() {
-        $("#heading").offset({ left: leftOffset });
-        leftOffset++;
+      function moveHeading() {
+        if (direction === 'right') {
+          $("#heading").offset({ left: offset });
+          offset++;
 
-        if (leftOffset > 200) {
-          leftOffset = 200;
+          if (offset > 200) {
+            offset = 0;
+            direction = 'down';
+          }
+        } else if (direction === 'down') {
+          $("#heading").offset({ top: offset });
+          offset++;
+
+          if (offset > 200) {
+            offset = 0;
+            direction = 'left';
+          }
+        } else if (direction === 'left') {
+          $("#heading").offset({ left: offset });
+          offset--;
+
+          if (offset < 0) {
+            offset = 200;
+            direction = 'up';
+          }
+        } else if (direction === 'up') {
+          $("#heading").offset({ top: offset });
+          offset--;
+
+          if (offset < 0) {
+            offset = 0;
+            direction = 'right';
+          }
         }
       };
 
-      function bottom() {
-        $("#heading").offset({ top: topOffset });
-        topOffset++;
-
-        if (topOffset > 200) {
-          topOffset = 200;
-        }
-      }
-
-      function left() {
-        $("#heading").offset({ left: leftOffset });
-        leftOffset--;
-
-        if (leftOffset = 0) {
-          leftOffset = 0;
-        }
-      };
-
-      function top() {
-        $("#heading").offset({ top: topOffset });
-        topOffset--;
-
-        if (topOffset = 0) {
-          topOffset = 0;
-        }
-      }
-
+      setInterval(moveHeading, 30);
 
     </script>
   </body>

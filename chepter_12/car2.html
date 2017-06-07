@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Гонки</title>
+  </head>
+  <body>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <script>
+
+      var Car = function (x, y) {
+        this.x = x;
+        this.y = y;
+      }
+
+      Car.prototype.draw = function (car) {
+        var carHtml = '<img src="http://nostarch.com/images/car.png">';
+        this.carElement = $(carHtml);
+        this.carElement.css({
+          position: "absolute",
+          left: this.x,
+          top: this.y
+        });
+        $("body").append(this.carElement);
+      };
+
+      Car.prototype.moveRight = function (car) {
+        this.x += 5;
+
+        this.carElement.css({
+          left: this.x,
+          top: this.y
+        });
+      }
+
+      Car.prototype.moveLeft = function (car) {
+        this.x -= 5;
+
+        this.carElement.css({
+          left: this.x,
+          top: this.y
+        });
+      }
+
+      Car.prototype.moveTop = function (car) {
+        this.y -= 5;
+
+        this.carElement.css({
+          left: this.x,
+          top: this.y
+        });
+      }
+
+      Car.prototype.moveBottom = function (car) {
+        this.y += 5;
+
+        this.carElement.css({
+          left: this.x,
+          top: this.y
+        });
+      }
+
+      var mark2 = new Car(10, 10);
+      var civic = new Car(150, 20);
+
+      mark2.draw();
+      civic.draw();
+
+      for (var i = 0; i < 100; i++) {
+        mark2.moveRight();
+      };
+
+    </script>
+  </body>
+</html>
